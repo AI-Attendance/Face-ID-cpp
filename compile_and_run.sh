@@ -45,6 +45,10 @@ if [ $o -eq 1 ]; then
 	exit 0
 fi
 echo --------------------------------------------------
-command time -f "\n--------------------------------------------------\n\
-Elapsed Time: %e sec\nCPU Percentage: %P" "$filename" "$@"
+if command time true &>/dev/null; then
+	command time -f "\n--------------------------------------------------\nElapsed Time: %e sec\nCPU Percentage: %P"\
+		"$filename" "$@"
+else
+	time "$filename" "$@"
+fi
 exit $?
