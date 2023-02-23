@@ -41,7 +41,7 @@ if (( o == 1 )); then
 	exit 0
 fi
 echo --------------------------------------------------
-if command time true &>/dev/null; then
+if command time -f "%P" true &>/dev/null; then
 	command time -f "\n--------------------------------------------------\nElapsed Time: %e sec\nCPU Percentage: %P" \
 		"$filename" "$@"
 else

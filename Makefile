@@ -15,7 +15,7 @@ else
 endif
 
 ###### extra variables #######
-MY_FLAGS := -I$(BINDIR) -I$(INCDIR) 
+MY_FLAGS := -I$(BINDIR) -I$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
 
 ###### complier set-up ######
 CXX = clang++
