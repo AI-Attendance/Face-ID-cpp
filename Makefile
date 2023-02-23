@@ -33,7 +33,7 @@ else
 	maketype := DEBUG
 	CXXFLAGS += -Og -ggdb3 -DDEBUG=1
 	# Overflow protection
-	CXXFLAGS += -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fstack-clash-protection -fcf-protection
+	CXXFLAGS += -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fcf-protection
 	CXXFLAGS += -Wl,-z,defs -Wl,-z,now -Wl,-z,relro
 	CXXFLAGS += -D_GLIBCXX_ASSERTIONS
 	CXXFLAGS += -fsanitize=address -fsanitize=undefined -fsanitize=leak
