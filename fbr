@@ -37,10 +37,10 @@ if (( d == 1 )); then
 	exit 0
 fi
 make RELEASE=$r all
-filename=$(make RELEASE=$r getTarget)
 if (( o == 1 )); then
 	exit 0
 fi
+filename=$(make RELEASE=$r getTarget)
 echo --------------------------------------------------
 if command time true &>/dev/null; then
 	command time -f "\n--------------------------------------------------\nElapsed Time: %e sec\nCPU Percentage: %P" \
