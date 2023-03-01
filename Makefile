@@ -14,23 +14,21 @@ else
 	TARGET := $(TARGET)Debug
 endif
 
-###### extra variables #######
-MY_FLAGS := -I$(BINDIR) -I$(INCDIR) 
+MY_FLAGS := -I$(BINDIR) -I$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
 
-###### complier set-up ######
 CXX = clang++
-CXXFLAGS = $(MY_FLAGS) -Wextra -Wno-unused-result -Wno-unused-command-line-argument -std=c++17
+CXXFLAGS = $(MY_FLAGS) -Wall -Wextra -Wno-unused-result -Wno-unused-command-line-argument -std=c++17
 LD = clang++
 LDFLAGS = $(CXXFLAGS)
 DEBUGGER = lldb
 
 ifeq ($(RELEASE), 1)
-	maketype := RELEASE
+	maketype := release
 	CXXFLAGS += -O2 -ftree-vectorize -fomit-frame-pointer -march=native
 	# Link Time Optimization
 	CXXFLAGS += -flto
 else
-	maketype := DEBUG
+	maketype := debug
 	CXXFLAGS += -Og -ggdb3 -DDEBUG=1
 	# Overflow protection
 	CXXFLAGS += -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fstack-clash-protection -fcf-protection
@@ -44,7 +42,7 @@ CXXFLAGS += -MMD -MP
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 SRCS += $(wildcard $(SRCDIR)/**/*.cpp)
 
-OBJS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/%.$(maketype).o,$(SRCS))
+OBJS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/$(maketype)/%.o,$(SRCS))
 
 .PHONY: all
 all : $(TARGET)
@@ -56,7 +54,7 @@ getTarget :
 .PHONY: init
 init :
 	-@rm -rf build $(wildcard *.exe)
-	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR) $(DEPDIR)
+	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR)
 	@for i in $(wildcard *.cpp) $(wildcard *.c); do mv ./$$i $(SRCDIR)/$$i; done
 	@for i in $(wildcard *.hpp) $(wildcard *.h); do mv ./$$i $(INCDIR)/$$i; done
 	@$(file >compile_flags.txt)
@@ -66,7 +64,7 @@ $(TARGET) : $(OBJS)
 	-@echo LD $(maketype) "ALL ->" $@ && \
 		$(LD) -o $@ $(OBJS) $(LDFLAGS)
 
-$(OBJDIR)/%.cpp.$(maketype).o : $(SRCDIR)/%.cpp
+$(OBJDIR)/$(maketype)/%.cpp.o : $(SRCDIR)/%.cpp
 	@$(eval CUR_DEP := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$<))
 	@mkdir -p $(@D) $(dir $(CUR_DEP))
 	-@echo CXX $(maketype) $< "->" $@ && \
@@ -76,7 +74,7 @@ DEPS := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$(SRCS))
 
 .PHONY: clean
 clean : 
-	-$(RM) $(OBJS) $(DEPS) $(TARGET)
+	-$(RM) $(OBJDIR)/$(maketype)/* $(DEPDIR)/* $(TARGET)
 
 .PHONY: debug
 debug : $(TARGET)
