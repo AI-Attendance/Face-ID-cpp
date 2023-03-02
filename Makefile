@@ -3,16 +3,11 @@ space := $(empty) $(empty)
 
 SRCDIR := src
 INCDIR := include
-OBJDIR := build/obj
-DEPDIR := build/deps
+BUILDDIR := build
+OBJDIR := $(BUILDDIR)/obj
+DEPDIR := $(BUILDDIR)/deps
+TARGETDIR := $(BUILDDIR)/target
 BINDIR := .
-
-TARGET := $(BINDIR)/Face_ID_
-ifeq ($(RELEASE), 1)
-	TARGET := $(TARGET)Release
-else
-	TARGET := $(TARGET)Debug
-endif
 
 MY_FLAGS := -I$(BINDIR) -I$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
 
@@ -39,6 +34,8 @@ endif
 
 CXXFLAGS += -MMD -MP
 
+TARGET := $(TARGETDIR)/$(maketype)/Face_ID
+
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 SRCS += $(wildcard $(SRCDIR)/**/*.cpp)
 
@@ -54,7 +51,7 @@ getTarget :
 .PHONY: init
 init :
 	-@rm -rf build $(wildcard *.exe)
-	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR)
+	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR) $(TARGETDIR)/{debug,release}
 	@for i in $(wildcard *.cpp) $(wildcard *.c); do mv ./$$i $(SRCDIR)/$$i; done
 	@for i in $(wildcard *.hpp) $(wildcard *.h); do mv ./$$i $(INCDIR)/$$i; done
 	@$(file >compile_flags.txt)

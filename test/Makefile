@@ -3,19 +3,14 @@ space := $(empty) $(empty)
 
 SRCDIR := src
 INCDIR := include
-OBJDIR := build/obj
-DEPDIR := build/deps
+BUILDDIR := build
+OBJDIR := $(BUILDDIR)/obj
+DEPDIR := $(BUILDDIR)/deps
+TARGETDIR := $(BUILDDIR)/target
 BINDIR1 := .
 BINDIR2 := ..
 
-TARGET := $(BINDIR1)/Face_ID_
-ifeq ($(RELEASE), 1)
-	TARGET := $(TARGET)release
-else
-	TARGET := $(TARGET)debug
-endif
-
-MY_FLAGS := -I$(BINDIR1) -I$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
+MY_FLAGS := -I$(BINDIR1) -I$(INCDIR) -I$(BINDIR2) -I$(BINDIR2)/$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
 
 CXX = clang++
 CXXFLAGS = $(MY_FLAGS) -Wall -Wextra -Wno-unused-result -Wno-unused-command-line-argument -std=c++17
@@ -40,6 +35,8 @@ endif
 
 CXXFLAGS += -MMD -MP
 
+TARGET := $(TARGETDIR)/$(maketype)/Face_ID
+
 SRCS := $(wildcard $(BINDIR2)/$(SRCDIR)/*.cpp)
 SRCS += $(wildcard $(BINDIR2)/$(SRCDIR)/**/*.cpp)
 SRCS := $(filter-out $(BINDIR2)/$(SRCDIR)/main.cpp,$(SRCS))
@@ -63,7 +60,7 @@ getTarget :
 .PHONY: init
 init :
 	-@rm -rf build $(wildcard *.exe)
-	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR)
+	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR) $(TARGETDIR)/{debug,release}
 	@mkdir -p $(BINDIR2)/{$(SRCDIR),$(INCDIR),$(OBJDIR)/{debug,release},$(DEPDIR)}
 	@for i in $(wildcard *.cpp) $(wildcard *.c); do mv ./$$i $(SRCDIR)/$$i; done
 	@for i in $(wildcard *.hpp) $(wildcard *.h); do mv ./$$i $(INCDIR)/$$i; done
