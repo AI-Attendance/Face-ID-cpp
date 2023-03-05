@@ -10,7 +10,11 @@ TARGETDIR := $(BUILDDIR)/target
 BINDIR1 := .
 BINDIR2 := ..
 
-MY_FLAGS := -I$(BINDIR1) -I$(INCDIR) -I$(BINDIR2) -I$(BINDIR2)/$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
+MY_FLAGS := -I$(BINDIR1) -I$(INCDIR) -I$(BINDIR2) -I$(BINDIR2)/$(INCDIR)
+
+# Packages used
+MY_FLAGS += $(shell PKG_CONFIG_PATH=$$(find /opt -iname pkgconfig -printf '%p:' 2>/dev/null)$$PKG_CONFIG_PATH \
+	pkg-config --cflags --libs openvino opencv4)
 
 CXX = clang++
 CXXFLAGS = $(MY_FLAGS) -Wall -Wextra -Wno-unused-result -Wno-unused-command-line-argument -std=c++17
@@ -60,14 +64,14 @@ getTarget :
 .PHONY: init
 init :
 	-@rm -rf build $(wildcard *.exe)
-	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR) $(TARGETDIR)/{debug,release}
-	@mkdir -p $(BINDIR2)/{$(SRCDIR),$(INCDIR),$(OBJDIR)/{debug,release},$(DEPDIR)}
-	@for i in $(wildcard *.cpp) $(wildcard *.c); do mv ./$$i $(SRCDIR)/$$i; done
-	@for i in $(wildcard *.hpp) $(wildcard *.h); do mv ./$$i $(INCDIR)/$$i; done
+	@mkdir -p $(SRCDIR) $(INCDIR)
+	@for i in $(wildcard *.cpp); do mv ./$$i $(SRCDIR)/$$i; done
+	@for i in $(wildcard *.hpp); do mv ./$$i $(INCDIR)/$$i; done
 	@$(file >compile_flags.txt)
 	@$(foreach i,$(CXXFLAGS),$(file >>compile_flags.txt,$(i)))
 
 $(TARGET) : $(OBJS)
+	@mkdir -p $(@D)
 	-@echo LD $(maketype) "ALL ->" $@ && \
 		$(LD) -o $@ $(OBJS) $(LDFLAGS)
 
@@ -87,7 +91,7 @@ $(BINDIR2)/$(OBJDIR)/$(maketype)/%.cpp.o : $(BINDIR2)/$(SRCDIR)/%.cpp
 
 .PHONY: clean
 clean : 
-	-$(RM) $(OBJDIR)/$(maketype)/* $(DEPDIR)/* $(TARGET)
+	-rm -rf $(OBJDIR)/$(maketype)/* $(DEPDIR)/* $(TARGETDIR)/$(maketype)/*
 
 .PHONY: debug
 debug : $(TARGET)
