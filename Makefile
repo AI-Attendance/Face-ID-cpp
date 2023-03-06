@@ -7,19 +7,12 @@ BUILDDIR := build
 OBJDIR := $(BUILDDIR)/obj
 DEPDIR := $(BUILDDIR)/deps
 TARGETDIR := $(BUILDDIR)/target
-EXAMPLESDIR := examples
 BINDIR := .
 
-MY_FLAGS := -I$(BINDIR) -I$(INCDIR)
-
-# Packages used
-MY_FLAGS += $(shell PKG_CONFIG_PATH=$$(find /opt -iname pkgconfig -printf '%p:' 2>/dev/null)$$PKG_CONFIG_PATH \
-	pkg-config --cflags --libs openvino opencv4)
+MY_FLAGS := -I$(BINDIR) -I$(INCDIR) $(shell pkg-config --cflags --libs opencv4)
 
 CXX = clang++
-CXXFLAGS = $(MY_FLAGS) -Wall -Wextra -std=c++17
-# Silence some warning messages
-CXXFLAGS += -Wno-unused-command-line-argument
+CXXFLAGS = $(MY_FLAGS) -Wall -Wextra -Wno-unused-result -Wno-unused-command-line-argument -std=c++17
 LD = clang++
 LDFLAGS = $(CXXFLAGS)
 DEBUGGER = lldb
@@ -31,7 +24,7 @@ ifeq ($(RELEASE), 1)
 	CXXFLAGS += -flto
 else
 	maketype := debug
-	CXXFLAGS += -Og -ggdb3
+	CXXFLAGS += -Og -ggdb3 -DDEBUG=1
 	# Overflow protection
 	CXXFLAGS += -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fcf-protection
 	CXXFLAGS += -Wl,-z,defs -Wl,-z,now -Wl,-z,relro
@@ -41,28 +34,12 @@ endif
 
 CXXFLAGS += -MMD -MP
 
+TARGET := $(TARGETDIR)/$(maketype)/Face_ID
+
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 SRCS += $(wildcard $(SRCDIR)/**/*.cpp)
 
 OBJS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/$(maketype)/%.o,$(SRCS))
-DEPS := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$(SRCS))
-
-COMPILE = echo CXX $(maketype) $(2) "->" $(1) && \
-		$(CXX) -c $(2) -o $(1) -MF $(3) $(CXXFLAGS)
-LINK = echo LD $(maketype) $(1) $(2) && \
-		$(LD) -o $(2) $(3) $(LDFLAGS)
-
-$(EXAMPLESDIR)/% : $(OBJDIR)/$(maketype)/$(EXAMPLESDIR)/%.cpp.o $(filter-out $(OBJDIR)/$(maketype)/main.cpp.o,$(OBJS))
-	-@$(call LINK,"",$@,$<)
-
-.PRECIOUS: $(OBJDIR)/$(maketype)/$(EXAMPLESDIR)/%.cpp.o
-$(OBJDIR)/$(maketype)/$(EXAMPLESDIR)/%.cpp.o : $(EXAMPLESDIR)/%.cpp
-	@$(eval CUR_DEP := $(patsubst $(EXAMPLESDIR)/%,$(DEPDIR)/%.d,$<))
-	@mkdir -p $(@D) $(dir $(CUR_DEP))
-	@$(eval DEPS += $(CUR_DEP))
-	-@$(call COMPILE,$@,$<,$(CUR_DEP))
-	
-TARGET := $(TARGETDIR)/$(maketype)/Face_ID
 
 .PHONY: all
 all : $(TARGET)
@@ -73,25 +50,28 @@ getTarget :
 
 .PHONY: init
 init :
-	-@rm -rf build
-	@mkdir -p $(SRCDIR) $(INCDIR) $(EXAMPLESDIR)
-	@for i in $(wildcard *.cpp); do mv ./$$i $(SRCDIR)/$$i; done
-	@for i in $(wildcard *.hpp); do mv ./$$i $(INCDIR)/$$i; done
+	-@rm -rf build $(wildcard *.exe)
+	@mkdir -p $(SRCDIR) $(INCDIR) $(OBJDIR)/{debug,release} $(DEPDIR) $(TARGETDIR)/{debug,release}
+	@for i in $(wildcard *.cpp) $(wildcard *.c); do mv ./$$i $(SRCDIR)/$$i; done
+	@for i in $(wildcard *.hpp) $(wildcard *.h); do mv ./$$i $(INCDIR)/$$i; done
 	@$(file >compile_flags.txt)
 	@$(foreach i,$(CXXFLAGS),$(file >>compile_flags.txt,$(i)))
 
 $(TARGET) : $(OBJS)
-	@mkdir -p $(@D)
-	-@$(call LINK,"ALL ->",$@,$<)
+	-@echo LD $(maketype) "ALL ->" $@ && \
+		$(LD) -o $@ $(OBJS) $(LDFLAGS)
 
 $(OBJDIR)/$(maketype)/%.cpp.o : $(SRCDIR)/%.cpp
 	@$(eval CUR_DEP := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$<))
 	@mkdir -p $(@D) $(dir $(CUR_DEP))
-	-@$(call COMPILE,$@,$<,$(CUR_DEP))
+	-@echo CXX $(maketype) $< "->" $@ && \
+		$(CXX) -c $< -o $@ -MF $(CUR_DEP) $(CXXFLAGS)
+
+DEPS := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$(SRCS))
 
 .PHONY: clean
 clean : 
-	-rm -rf $(OBJDIR)/$(maketype)/* $(DEPDIR)/* $(TARGETDIR)/$(maketype)/*
+	-$(RM) $(OBJDIR)/$(maketype)/* $(DEPDIR)/* $(TARGET)
 
 .PHONY: debug
 debug : $(TARGET)
