@@ -1,3 +1,0 @@
-/home/eslam/Desktop/Face-ID-cpp/cmakeBuild/CMakeFiles/main.dir
-/home/eslam/Desktop/Face-ID-cpp/cmakeBuild/CMakeFiles/edit_cache.dir
-/home/eslam/Desktop/Face-ID-cpp/cmakeBuild/CMakeFiles/rebuild_cache.dir

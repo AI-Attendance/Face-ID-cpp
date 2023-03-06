@@ -1,4 +1,3 @@
-#include <inference_engine.hpp>
 #include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
@@ -10,7 +9,6 @@ using namespace std;
 using namespace cv;
 
 int main() {
-  cout<<"test cout \n";
   VideoCapture cam(0);
   if (!cam.isOpened()) {
     cout << "Not opened!" << endl;
