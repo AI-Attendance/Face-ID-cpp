@@ -41,8 +41,9 @@ endif
 
 CXXFLAGS += -MMD -MP
 
-SRCS := $(wildcard $(SRCDIR)/*.cpp)
-SRCS += $(wildcard $(SRCDIR)/**/*.cpp)
+SHELL := /bin/bash
+
+SRCS := $(shell find $(SRCDIR) -name *.cpp)
 
 OBJS := $(patsubst $(SRCDIR)/%,$(OBJDIR)/$(maketype)/%.o,$(SRCS))
 DEPS := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$(SRCS))
@@ -82,7 +83,7 @@ init :
 
 $(TARGET) : $(OBJS)
 	@mkdir -p $(@D)
-	-@$(call LINK,"ALL ->",$@,$<)
+	-@$(call LINK,"ALL ->",$@,$(OBJS))
 
 $(OBJDIR)/$(maketype)/%.cpp.o : $(SRCDIR)/%.cpp
 	@$(eval CUR_DEP := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$<))

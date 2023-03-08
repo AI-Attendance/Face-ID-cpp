@@ -41,15 +41,15 @@ CXXFLAGS += -MMD -MP
 
 TARGET := $(TARGETDIR)/$(maketype)/Face_ID
 
-SRCS := $(wildcard $(BINDIR2)/$(SRCDIR)/*.cpp)
-SRCS += $(wildcard $(BINDIR2)/$(SRCDIR)/**/*.cpp)
+SHELL := /bin/bash
+
+SRCS := $(shell find $(BINDIR2)/$(SRCDIR) -name *.cpp)
 SRCS := $(filter-out $(BINDIR2)/$(SRCDIR)/main.cpp,$(SRCS))
 
 OBJS := $(patsubst $(BINDIR2)/$(SRCDIR)/%,$(BINDIR2)/$(OBJDIR)/$(maketype)/%.o,$(SRCS))
 DEPS := $(patsubst $(BINDIR2)/$(SRCDIR)/%,$(BINDIR2)/$(DEPDIR)/%.d,$(SRCS))
 
-SRCS := $(wildcard $(SRCDIR)/*.cpp)
-SRCS += $(wildcard $(SRCDIR)/**/*.cpp)
+SRCS := $(shell find $(SRCDIR) -name *.cpp)
 
 OBJS += $(patsubst $(SRCDIR)/%,$(OBJDIR)/$(maketype)/%.o,$(SRCS))
 DEPS += $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$(SRCS))
