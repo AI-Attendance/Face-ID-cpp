@@ -129,6 +129,30 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+src/image_tools.o: src/image_tools.cpp.o
+.PHONY : src/image_tools.o
+
+# target to build an object file
+src/image_tools.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/image_tools.cpp.o
+.PHONY : src/image_tools.cpp.o
+
+src/image_tools.i: src/image_tools.cpp.i
+.PHONY : src/image_tools.i
+
+# target to preprocess a source file
+src/image_tools.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/image_tools.cpp.i
+.PHONY : src/image_tools.cpp.i
+
+src/image_tools.s: src/image_tools.cpp.s
+.PHONY : src/image_tools.s
+
+# target to generate assembly for a file
+src/image_tools.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/image_tools.cpp.s
+.PHONY : src/image_tools.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... src/image_tools.o"
+	@echo "... src/image_tools.i"
+	@echo "... src/image_tools.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

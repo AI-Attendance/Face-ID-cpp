@@ -1,8 +1,6 @@
-CMakeFiles/main.dir/src/main.cpp.o: \
- /home/eslam/Desktop/Face-ID-cpp/src/main.cpp /usr/include/stdc-predef.h \
- /home/eslam/Desktop/Face-ID-cpp/include/image_tools.hpp \
- /usr/include/opencv4/opencv2/core/mat.hpp \
- /usr/include/opencv4/opencv2/core/matx.hpp \
+CMakeFiles/main.dir/src/image_tools.cpp.o: \
+ /home/eslam/Desktop/Face-ID-cpp/src/image_tools.cpp \
+ /usr/include/stdc-predef.h /usr/include/opencv4/opencv2/core.hpp \
  /usr/include/opencv4/opencv2/core/cvdef.h \
  /usr/lib/gcc/x86_64-linux-gnu/9/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/9/include/syslimits.h \
@@ -149,6 +147,7 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/9/bits/basic_string.tcc \
+ /usr/include/opencv4/opencv2/core/version.hpp \
  /usr/include/opencv4/opencv2/core/base.hpp \
  /usr/include/opencv4/opencv2/opencv_modules.hpp \
  /usr/include/c++/9/climits /usr/include/c++/9/algorithm \
@@ -216,15 +215,14 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/opencv4/opencv2/core/vsx_utils.hpp /usr/include/assert.h \
  /usr/include/opencv4/opencv2/core/check.hpp \
  /usr/include/opencv4/opencv2/core/traits.hpp \
+ /usr/include/opencv4/opencv2/core/matx.hpp \
  /usr/include/opencv4/opencv2/core/saturate.hpp \
  /usr/include/opencv4/opencv2/core/fast_math.hpp \
  /usr/include/opencv4/opencv2/core/types.hpp /usr/include/c++/9/cfloat \
  /usr/lib/gcc/x86_64-linux-gnu/9/include/float.h \
+ /usr/include/opencv4/opencv2/core/mat.hpp \
  /usr/include/opencv4/opencv2/core/bufferpool.hpp \
  /usr/include/opencv4/opencv2/core/mat.inl.hpp \
- /usr/include/opencv4/opencv2/opencv.hpp \
- /usr/include/opencv4/opencv2/core.hpp \
- /usr/include/opencv4/opencv2/core/version.hpp \
  /usr/include/opencv4/opencv2/core/persistence.hpp \
  /usr/include/opencv4/opencv2/core/operations.hpp \
  /usr/include/opencv4/opencv2/core/cvstd.inl.hpp \
@@ -254,6 +252,11 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/opencv4/opencv2/core/optim.hpp \
  /usr/include/opencv4/opencv2/core/ovx.hpp \
  /usr/include/opencv4/opencv2/core/cvdef.h \
+ /usr/include/opencv4/opencv2/highgui.hpp \
+ /usr/include/opencv4/opencv2/imgcodecs.hpp \
+ /usr/include/opencv4/opencv2/videoio.hpp \
+ /home/eslam/Desktop/Face-ID-cpp/include/image_tools.hpp \
+ /usr/include/opencv4/opencv2/opencv.hpp \
  /usr/include/opencv4/opencv2/calib3d.hpp \
  /usr/include/opencv4/opencv2/features2d.hpp \
  /usr/include/opencv4/opencv2/flann/miniflann.hpp \
@@ -310,9 +313,6 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/opencv4/opencv2/flann/index_testing.h \
  /usr/include/opencv4/opencv2/flann/timer.h \
  /usr/include/opencv4/opencv2/flann/sampling.h \
- /usr/include/opencv4/opencv2/highgui.hpp \
- /usr/include/opencv4/opencv2/imgcodecs.hpp \
- /usr/include/opencv4/opencv2/videoio.hpp \
  /usr/include/opencv4/opencv2/imgproc.hpp \
  /usr/include/opencv4/opencv2/ml.hpp \
  /usr/include/opencv4/opencv2/ml/ml.inl.hpp \
@@ -375,164 +375,4 @@ CMakeFiles/main.dir/src/main.cpp.o: \
  /usr/include/opencv4/opencv2/viz/types.hpp \
  /usr/include/opencv4/opencv2/viz/widgets.hpp \
  /usr/include/opencv4/opencv2/viz/viz3d.hpp \
- /usr/include/opencv4/opencv2/viz/vizcore.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/inference_engine.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_compound_blob.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_blob.h \
- /usr/include/c++/9/numeric /usr/include/c++/9/bits/stl_numeric.h \
- /usr/include/c++/9/pstl/glue_numeric_defs.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/details/ie_blob_iterator.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_locked_memory.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_allocator.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_api.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/details/ie_pre_allocator.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_common.h \
- /usr/include/c++/9/iterator /usr/include/c++/9/bits/stream_iterator.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_layouts.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_precision.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_core.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/cpp/ie_executable_network.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/cpp/ie_cnn_network.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_data.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_icnn_network.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_input_info.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_preprocess.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/function.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/ngraph_visibility.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/visibility.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/visibility.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/core_visibility.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/node.hpp \
- /usr/include/c++/9/atomic /usr/include/c++/9/typeindex \
- /usr/include/c++/9/unordered_set /usr/include/c++/9/bits/unordered_set.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/attribute_visitor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/partial_shape.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/attribute_adapter.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/enum_names.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/check.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/except.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/deprecated.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/deprecated.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/except.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/enum_names.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/type.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/type.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/compatibility.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/attribute_adapter.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/any.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/attribute_visitor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/runtime_attribute.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/node_vector.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/rtti.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/dimension.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/interval.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/interval.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/dimension.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/util/attr_types.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/util/attr_types.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/rank.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/rank.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/shape.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/axis_set.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/axis_set.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/strides.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/strides.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/shape.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/partial_shape.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/type/element_type.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/type/bfloat16.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/type/bfloat16.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/type/float16.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/type/float16.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/type/element_type.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/coordinate.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/coordinate.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/coordinate_diff.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/coordinate_diff.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/descriptor/input.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/descriptor/tensor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/descriptor/tensor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/variant.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/descriptor/input.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/descriptor/output.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/node_output.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/node_output.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/descriptor/output.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/node_input.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/node_input.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/util/op_annotations.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/util/variable.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/util/variable.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/util/variable_value.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/runtime/host_tensor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/runtime/tensor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/type/element_type_traits.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/type/element_type_traits.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/util/variable_value.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/output_vector.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/node.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/runtime/tensor.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/runtime/allocator.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/assign.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/sink.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/op.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/op.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/sink.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/util/variable_extension.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/util/variable_extension.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/assign.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/util/assign_base.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/parameter.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/parameter.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/layout.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/read_value.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/read_value.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/util/read_value_base.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/op/result.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/op/result.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/core/model.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/cpp/ie_infer_request.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/cpp/ie_memory_state.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_iinfer_request.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_iexecutable_network.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_parameter.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_remote_context.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_remote_blob.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_extension.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_iextension.h \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_version.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/opsets/opset.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ngraph/factory.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/openvino/opsets/opset.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_plugin_config.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/hetero/hetero_plugin_config.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/multi-device/multi_device_config.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/cldnn/cldnn_config.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/gpu/gpu_config.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/gna/gna_config.hpp \
- /opt/intel/openvino_2022.3.0/runtime/include/ie/ie_transformations.hpp \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/cv/ncnn_facenet.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/core/ncnn_core.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/core/ncnn_config.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/core/ncnn_defs.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/config.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/lite.ai.defs.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/config.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/lite.ai.headers.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/lite.ai.defs.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/net.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/blob.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/mat.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/allocator.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/platform.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/ncnn_export.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/option.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/layer.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/modelbin.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/paramdict.h \
- /home/eslam/Desktop/Face-ID-cpp/./ncnn/layer.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/core/ncnn_handler.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/core/ncnn_types.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/types.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/lite.ai.headers.h \
- /home/eslam/Desktop/Face-ID-cpp/include/lite/ncnn/core/ncnn_custom.h
+ /usr/include/opencv4/opencv2/viz/vizcore.hpp
