@@ -10,6 +10,8 @@ TARGETDIR := $(BUILDDIR)/target
 BINDIR1 := .
 BINDIR2 := ..
 
+SHELL := /bin/bash
+
 MY_FLAGS := -I$(BINDIR1) -I$(INCDIR) -I$(BINDIR2) -I$(BINDIR2)/$(INCDIR)
 
 # Packages used
@@ -41,8 +43,6 @@ CXXFLAGS += -MMD -MP
 
 TARGET := $(TARGETDIR)/$(maketype)/Face_ID
 
-SHELL := /bin/bash
-
 SRCS := $(shell find $(BINDIR2)/$(SRCDIR) -name *.cpp)
 SRCS := $(filter-out $(BINDIR2)/$(SRCDIR)/main.cpp,$(SRCS))
 
@@ -73,7 +73,7 @@ init :
 $(TARGET) : $(OBJS)
 	@mkdir -p $(@D)
 	-@echo LD $(maketype) "ALL ->" $@ && \
-		$(LD) -o $@ $(OBJS) $(LDFLAGS)
+		$(LD) -o $@ $^ $(LDFLAGS)
 
 CREATE = mkdir -p $(1) $(dir $(2))
 COMPILE = echo CXX $(maketype) $(1) "->" $(2) && \

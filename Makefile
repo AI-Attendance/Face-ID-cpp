@@ -10,6 +10,8 @@ TARGETDIR := $(BUILDDIR)/target
 EXAMPLESDIR := examples
 BINDIR := .
 
+SHELL := /bin/bash
+
 MY_FLAGS := -I$(BINDIR) -I$(INCDIR)
 
 # Packages used
@@ -40,8 +42,6 @@ else
 endif
 
 CXXFLAGS += -MMD -MP
-
-SHELL := /bin/bash
 
 SRCS := $(shell find $(SRCDIR) -name *.cpp)
 
@@ -83,7 +83,7 @@ init :
 
 $(TARGET) : $(OBJS)
 	@mkdir -p $(@D)
-	-@$(call LINK,"ALL ->",$@,$(OBJS))
+	-@$(call LINK,"ALL ->",$@,$^)
 
 $(OBJDIR)/$(maketype)/%.cpp.o : $(SRCDIR)/%.cpp
 	@$(eval CUR_DEP := $(patsubst $(SRCDIR)/%,$(DEPDIR)/%.d,$<))
