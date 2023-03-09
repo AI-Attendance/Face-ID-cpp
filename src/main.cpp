@@ -22,8 +22,10 @@ int main() {
   }
   Mat frame;
   cam >> frame;
+  pad(frame, frame, 1000, 1000);
+  cv::imshow("test", frame);
+  cout << frame.size[0];
 
-  pad(frame, frame, 200, 200);
   while (true) {
     Mat frame;
     cam >> frame;
