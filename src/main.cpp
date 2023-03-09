@@ -1,4 +1,3 @@
-#include <image_tools.hpp>
 #include <inference_engine.hpp>
 #include <iostream>
 #include <lite/ncnn/cv/ncnn_facenet.h>
@@ -7,6 +6,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/videoio.hpp>
+#include <utilities/image.hpp>
 
 using namespace std;
 using namespace cv;

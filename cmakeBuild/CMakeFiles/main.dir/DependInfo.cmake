@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/eslam/Desktop/Face-ID-cpp/src/image_tools.cpp" "CMakeFiles/main.dir/src/image_tools.cpp.o" "gcc" "CMakeFiles/main.dir/src/image_tools.cpp.o.d"
   "/home/eslam/Desktop/Face-ID-cpp/src/main.cpp" "CMakeFiles/main.dir/src/main.cpp.o" "gcc" "CMakeFiles/main.dir/src/main.cpp.o.d"
+  "/home/eslam/Desktop/Face-ID-cpp/src/utilities/image.cpp" "CMakeFiles/main.dir/src/utilities/image.cpp.o" "gcc" "CMakeFiles/main.dir/src/utilities/image.cpp.o.d"
   )
 
 # Targets to which this target links.

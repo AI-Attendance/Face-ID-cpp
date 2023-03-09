@@ -83,30 +83,30 @@ CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eslam/Desktop/Face-ID-cpp/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
-CMakeFiles/main.dir/src/image_tools.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/image_tools.cpp.o: ../src/image_tools.cpp
-CMakeFiles/main.dir/src/image_tools.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eslam/Desktop/Face-ID-cpp/cmakeBuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/image_tools.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/image_tools.cpp.o -MF CMakeFiles/main.dir/src/image_tools.cpp.o.d -o CMakeFiles/main.dir/src/image_tools.cpp.o -c /home/eslam/Desktop/Face-ID-cpp/src/image_tools.cpp
+CMakeFiles/main.dir/src/utilities/image.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/utilities/image.cpp.o: ../src/utilities/image.cpp
+CMakeFiles/main.dir/src/utilities/image.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eslam/Desktop/Face-ID-cpp/cmakeBuild/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/utilities/image.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/utilities/image.cpp.o -MF CMakeFiles/main.dir/src/utilities/image.cpp.o.d -o CMakeFiles/main.dir/src/utilities/image.cpp.o -c /home/eslam/Desktop/Face-ID-cpp/src/utilities/image.cpp
 
-CMakeFiles/main.dir/src/image_tools.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/image_tools.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eslam/Desktop/Face-ID-cpp/src/image_tools.cpp > CMakeFiles/main.dir/src/image_tools.cpp.i
+CMakeFiles/main.dir/src/utilities/image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/utilities/image.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eslam/Desktop/Face-ID-cpp/src/utilities/image.cpp > CMakeFiles/main.dir/src/utilities/image.cpp.i
 
-CMakeFiles/main.dir/src/image_tools.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/image_tools.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eslam/Desktop/Face-ID-cpp/src/image_tools.cpp -o CMakeFiles/main.dir/src/image_tools.cpp.s
+CMakeFiles/main.dir/src/utilities/image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/utilities/image.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eslam/Desktop/Face-ID-cpp/src/utilities/image.cpp -o CMakeFiles/main.dir/src/utilities/image.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/src/main.cpp.o" \
-"CMakeFiles/main.dir/src/image_tools.cpp.o"
+"CMakeFiles/main.dir/src/utilities/image.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/src/main.cpp.o
-main: CMakeFiles/main.dir/src/image_tools.cpp.o
+main: CMakeFiles/main.dir/src/utilities/image.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.2.0
 main: /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.2.0
