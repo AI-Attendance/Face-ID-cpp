@@ -3,6 +3,7 @@ space := $(empty) $(empty)
 
 SRCDIR := src
 INCDIR := include
+LIBDIR := libs
 BUILDDIR := build
 OBJDIR := $(BUILDDIR)/obj
 DEPDIR := $(BUILDDIR)/deps
@@ -12,14 +13,14 @@ BINDIR := .
 
 SHELL := /bin/bash
 
-MY_FLAGS := -I$(BINDIR) -I$(INCDIR)
+MY_FLAGS := -I$(BINDIR) -I$(INCDIR) -L$(LIBDIR) -lncnn -I$(INCDIR)/detectors/yolo -I$(INCDIR)/detectors/yolo/ncnn -fopenmp
 
 # Packages used
 MY_FLAGS += $(shell PKG_CONFIG_PATH=$$(find /opt -iname pkgconfig -printf '%p:' 2>/dev/null)$$PKG_CONFIG_PATH \
 	pkg-config --cflags --libs openvino opencv4)
 
 CXX = clang++
-CXXFLAGS = $(MY_FLAGS) -Wall -Wextra -std=c++17
+CXXFLAGS = $(MY_FLAGS) -xc++ -Wall -Wextra -std=c++17
 # Silence some warning messages
 CXXFLAGS += -Wno-unused-command-line-argument
 LD = clang++
@@ -75,7 +76,7 @@ getTarget :
 .PHONY: init
 init :
 	-@rm -rf build
-	@mkdir -p $(SRCDIR) $(INCDIR) $(EXAMPLESDIR)
+	@mkdir -p $(SRCDIR) $(INCDIR) $(LIBDIR) $(EXAMPLESDIR)
 	@for i in $(wildcard *.cpp); do mv ./$$i $(SRCDIR)/$$i; done
 	@for i in $(wildcard *.hpp); do mv ./$$i $(INCDIR)/$$i; done
 	@$(file >compile_flags.txt)
