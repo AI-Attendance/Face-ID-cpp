@@ -5,10 +5,13 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/videoio.hpp>
 
+#include "utilities/image/image.hpp"
+
 using namespace std;
 using namespace cv;
 
 int main() {
+  image_tools::dummy();
   VideoCapture cam(0);
   if (!cam.isOpened()) {
     cout << "Not opened!" << endl;

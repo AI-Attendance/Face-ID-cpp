@@ -1,4 +1,4 @@
-#include "detectors.hpp"
+#include "detectors/common.hpp"
 
 std::function<std::vector<detectors::FaceLandmarks>(image_tools::Image)>
 yolo_factory(detectors::Model *model) {
